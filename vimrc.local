@@ -1,0 +1,7 @@
+" vim-rspec mappings continued
+let g:rspec_command = "!bin/rspec {spec}"
+nnoremap <Leader>a :call RunAllSpecs()<CR>
+
+" tmux runner stuff
+nnoremap <Leader>rc :call VtrSendCommandToRunner()<CR>
+nnoremap <Leader>kr :call VtrKillRunner()<CR>

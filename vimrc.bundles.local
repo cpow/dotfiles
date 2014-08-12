@@ -1,0 +1,5 @@
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'mattn/emmet-vim'
+Plugin 'rking/ag.vim'
+Plugin 'Valloric/YouCompleteMe'

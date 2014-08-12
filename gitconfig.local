@@ -1,0 +1,5 @@
+[alias]
+  sla = "!git --no-pager log --oneline --decorate --all --graph -35"
+[user]
+  name = cpow
+  email = cpow85@gmail.com
