@@ -5,3 +5,14 @@ nnoremap <Leader>a :call RunAllSpecs()<CR>
 " tmux runner stuff
 nnoremap <Leader>rc :call VtrSendCommandToRunner()<CR>
 nnoremap <Leader>kr :call VtrKillRunner()<CR>
+
+" Fix slow O inserts
+:set timeout timeoutlen=1000 ttimeoutlen=100
+
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)

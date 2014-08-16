@@ -1,0 +1,7 @@
+# Nicer history
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
+# Highlight search results in ack.
+export ACK_COLOR_MATCH='red'
