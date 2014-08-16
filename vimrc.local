@@ -9,6 +9,13 @@ nnoremap <Leader>kr :call VtrKillRunner()<CR>
 " Fix slow O inserts
 :set timeout timeoutlen=1000 ttimeoutlen=100
 
+" highlight current line
+set cursorline
+set cmdheight=1
+set switchbuf=useopen
+set showtabline=2
+set winwidth=79
+
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
