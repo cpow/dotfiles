@@ -14,12 +14,7 @@ set cursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=2
-set winwidth=79
+set winwidth=90
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STATUS LINE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
