@@ -18,3 +18,6 @@ set winwidth=90
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
+
+" relative numbers
+set rnu

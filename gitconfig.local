@@ -1,5 +1,7 @@
 [alias]
   sla = "!git --no-pager log --oneline --decorate --all --graph -35"
+[diff]
+  tool = vimdiff
 [user]
   name = cpow
   email = cpow85@gmail.com
