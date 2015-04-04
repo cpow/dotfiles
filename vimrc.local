@@ -1,10 +1,6 @@
 " vim-rspec mappings continued
-let g:rspec_command = "!bin/rspec {spec}"
+let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
 nnoremap <Leader>a :call RunAllSpecs()<CR>
-
-" tmux runner stuff
-nnoremap <Leader>rc :call VtrSendCommandToRunner()<CR>
-nnoremap <Leader>kr :call VtrKillRunner()<CR>
 
 " Fix slow O inserts
 :set timeout timeoutlen=1000 ttimeoutlen=100
@@ -14,10 +10,54 @@ set cursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=2
-set winwidth=90
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
 " relative numbers
 set rnu
+
+set t_Co=256
+set background=light
+colorscheme github
+
+" use pick to pick files in vim
+nnoremap <Leader>p :call PickFile()<CR>
+nnoremap <Leader>s :call PickFileSplit()<CR>
+nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+
+" highlight search and clear search
+set hlsearch
+nnoremap <Leader>h :nohlsearch<CR>
+
+" use arrows for youcompleteme, tab expands snippets
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+let g:UltiSnipsExpandTrigger="<tab>"
+
+" nice silver searcher Agrep command
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" only use syntastic when I want to
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>e :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+" ==================== Vim-go ====================
+au BufRead,BufNewFile *.go set filetype=go
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
+
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gs <Plug>(go-def-split)
+
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>gd <Plug>(go-doc-browser)

@@ -1,0 +1,6 @@
+alias tmux="TERM=screen-256color-bce tmux"
+
+alias pick_tmux="tmux ls | pick | cut -d ":" -f 1"
+function tat(){
+  tmux a -t $(pick_tmux)
+}

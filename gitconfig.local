@@ -1,5 +1,6 @@
 [alias]
   sla = "!git --no-pager log --oneline --decorate --all --graph -35"
+  pr = !hub pull-request --browse
 [diff]
   tool = vimdiff
 [user]
