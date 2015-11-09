@@ -1,5 +1,5 @@
 " vim-rspec mappings continued
-let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
+let g:rspec_command = '!bin/rspec {spec}'
 nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 " Fix slow O inserts
@@ -18,13 +18,15 @@ set autoread
 set rnu
 
 set t_Co=256
-set background=light
-colorscheme github
+set background=dark
+colorscheme Railscasts
 
 " use pick to pick files in vim
 nnoremap <Leader>p :call PickFile()<CR>
-nnoremap <Leader>s :call PickFileSplit()<CR>
 nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+
+" js beautify
+nnoremap <Leader>f :call JsBeautify()<CR>
 
 " highlight search and clear search
 set hlsearch

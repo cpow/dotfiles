@@ -2,7 +2,9 @@
   sla = "!git --no-pager log --oneline --decorate --all --graph -35"
   pr = !hub pull-request --browse
 [diff]
-  tool = vimdiff
+  tool = opendiff
+[merge]
+  tool = opendiff
 [user]
   name = cpow
   email = cpow85@gmail.com
