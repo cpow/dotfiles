@@ -1,5 +1,5 @@
 " vim-rspec mappings continued
-let g:rspec_command = '!bin/rspec {spec}'
+let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
 nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 " Fix slow O inserts
@@ -13,13 +13,15 @@ set showtabline=2
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
+set hidden
 
 " relative numbers
 set rnu
+set listchars=tab:▸\ ,eol:¬
 
 set t_Co=256
 set background=dark
-colorscheme Railscasts
+colorscheme base16-railscasts
 
 " use pick to pick files in vim
 nnoremap <Leader>p :call PickFile()<CR>
@@ -42,9 +44,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" only use syntastic when I want to
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <leader>e :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 
 " ==================== Vim-go ====================
 au BufRead,BufNewFile *.go set filetype=go
@@ -63,3 +63,22 @@ au FileType go nmap <Leader>gs <Plug>(go-def-split)
 au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <Leader>gd <Plug>(go-doc-browser)
+
+highlight clear SignColumn
+highlight TabLineFill ctermfg=236 ctermbg=240
+highlight TabLine ctermfg=236 ctermbg=240
+highlight TabLineSel ctermfg=red ctermbg=240
+highlight VertSplit    ctermbg=236
+highlight ColorColumn  ctermbg=237
+highlight LineNr       ctermbg=236 ctermfg=240
+highlight CursorLineNr ctermbg=236 ctermfg=240
+highlight CursorLine   ctermbg=236
+highlight StatusLineNC ctermbg=238 ctermfg=0
+highlight StatusLine   ctermbg=240 ctermfg=12
+highlight IncSearch    ctermbg=3   ctermfg=1
+highlight Search       ctermbg=1   ctermfg=3
+highlight Visual       ctermbg=3   ctermfg=0
+highlight Pmenu        ctermbg=240 ctermfg=12
+highlight PmenuSel     ctermbg=3   ctermfg=1
+highlight SpellBad     ctermbg=0   ctermfg=1
+

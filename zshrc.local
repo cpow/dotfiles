@@ -6,5 +6,7 @@ export SAVEHIST=$HISTSIZE
 # Highlight search results in ack.
 export ACK_COLOR_MATCH='red'
 
-export GOPATH=/Users/cpow/git/go
-export PATH=$PATH:$GOPATH/bin
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
+ 

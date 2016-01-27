@@ -44,3 +44,6 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 run '~/.tmux/plugins/tpm/tpm'
+
+set -g default-terminal "screen-256color"
+set -sg escape-time 0
