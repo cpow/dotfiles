@@ -1,0 +1,12 @@
+keycode 66 = Control_L
+clear Lock
+add Control = Control_L
+
+keycode 64 = Meta_L
+keycode 133 = Alt_L
+
+remove Mod1 = Meta_L
+remove Mod4 = Alt_L
+
+add Mod1 = Alt_L
+add Mod4 = Meta_L
