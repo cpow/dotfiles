@@ -47,3 +47,9 @@ run '~/.tmux/plugins/tpm/tpm'
 
 set -g default-terminal "screen-256color"
 set -sg escape-time 0
+
+unbind b
+bind b select-layout '81a6,343x64,0,0{248x64,0,0,0,94x64,249,0[94x32,249,0,3,94x31,249,33,4]}'
+
+unbind v
+bind v select-layout '7bb8,178x46,0,0[178x36,0,0,0,178x9,0,37{88x9,0,37,1,89x9,89,37,2}]'
