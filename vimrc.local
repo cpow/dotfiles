@@ -17,7 +17,7 @@ set hidden
 
 " relative numbers
 set rnu
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
 
 set t_Co=256
 set background=dark

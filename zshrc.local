@@ -13,3 +13,4 @@ export TERM=xterm-256color
 export PATH=/home/cpow/.npm:$PATH
 path+=('/home/cpow/npm')
 path+=('/home/cpow/npm/bin')
+export PATH="$HOME/.rbenv/bin:$PATH"
