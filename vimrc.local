@@ -1,9 +1,11 @@
 " vim-rspec mappings continued
 let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
 nnoremap <Leader>a :call RunAllSpecs()<CR>
-
+nnoremap <c-p> :FZF<cr>
+map <C-n> :NERDTreeToggle<CR>
+"
 " Fix slow O inserts
-:set timeout timeoutlen=1000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 " highlight current line
 set cursorline
@@ -17,26 +19,35 @@ set hidden
 
 " relative numbers
 set rnu
+set re=1
 " set listchars=tab:▸\ ,eol:¬
+" set re=1
 
 set t_Co=256
-set background=dark
-colorscheme base16-railscasts
-
-" use pick to pick files in vim
-nnoremap <Leader>p :call PickFile()<CR>
-nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+set background=light
+colorscheme github
 
 " js beautify
-nnoremap <Leader>f :call JsBeautify()<CR>
+" nnoremap <Leader>f :call JsBeautify()<CR>
 
 " highlight search and clear search
 set hlsearch
 nnoremap <Leader>h :nohlsearch<CR>
 
+" session management
+" let g:session_directory = "~/.vim/session"
+" let g:session_autoload = "no"
+" let g:session_autosave = "no"
+" let g:session_command_aliases = 1
+" nnoremap <leader>so :OpenSession<CR>
+" nnoremap <leader>ss :SaveSession<CR>
+" nnoremap <leader>sd :DeleteSession<CR>
+" nnoremap <leader>sc :CloseSession<CR>
+
 " use arrows for youcompleteme, tab expands snippets
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+set runtimepath+=~/.config/nvim/bundle/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+autocmd! BufWritePost * Neomake
 let g:UltiSnipsExpandTrigger="<tab>"
 
 " nice silver searcher Agrep command
@@ -46,39 +57,21 @@ endif
 
 au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 
-" ==================== Vim-go ====================
-au BufRead,BufNewFile *.go set filetype=go
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 0
-
-au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>gs <Plug>(go-def-split)
-
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <Leader>gd <Plug>(go-doc-browser)
-
-highlight clear SignColumn
-highlight TabLineFill ctermfg=236 ctermbg=240
-highlight TabLine ctermfg=236 ctermbg=240
-highlight TabLineSel ctermfg=red ctermbg=240
-highlight VertSplit    ctermbg=236
-highlight ColorColumn  ctermbg=237
-highlight LineNr       ctermbg=236 ctermfg=240
-highlight CursorLineNr ctermbg=236 ctermfg=240
-highlight CursorLine   ctermbg=236
-highlight StatusLineNC ctermbg=238 ctermfg=0
-highlight StatusLine   ctermbg=240 ctermfg=12
-highlight IncSearch    ctermbg=3   ctermfg=1
-highlight Search       ctermbg=1   ctermfg=3
-highlight Visual       ctermbg=3   ctermfg=0
-highlight Pmenu        ctermbg=240 ctermfg=12
-highlight PmenuSel     ctermbg=3   ctermfg=1
-highlight SpellBad     ctermbg=0   ctermfg=1
-
+" highlight clear SignColumn
+" highlight TabLineFill ctermfg=236 ctermbg=240
+" highlight TabLine ctermfg=236 ctermbg=240
+" highlight TabLineSel ctermfg=red ctermbg=240
+" highlight VertSplit    ctermbg=236
+" highlight ColorColumn  ctermbg=237
+" highlight LineNr       ctermbg=236 ctermfg=240
+" highlight CursorLineNr ctermbg=236 ctermfg=240
+" highlight CursorLine   ctermbg=236
+" highlight StatusLineNC ctermbg=238 ctermfg=0
+" highlight StatusLine   ctermbg=240 ctermfg=12
+" highlight IncSearch    ctermbg=3   ctermfg=1
+" highlight Search       ctermbg=1   ctermfg=3
+" highlight Visual       ctermbg=3   ctermfg=0
+" highlight Pmenu        ctermbg=240 ctermfg=12
+" highlight PmenuSel     ctermbg=3   ctermfg=1
+" highlight SpellBad     ctermbg=0   ctermfg=1
+"

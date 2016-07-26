@@ -14,3 +14,10 @@ export PATH=/home/cpow/.npm:$PATH
 path+=('/home/cpow/npm')
 path+=('/home/cpow/npm/bin')
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+export NVM_DIR="/Users/cpow/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Base16 Shell
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.light.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
