@@ -1,0 +1,209 @@
+// atom-text-editor.tree-view {
+//   font-size: 10px;
+//   .list-item {
+//     line-height: 18px !important;
+//   }
+//   .selected:before, .selected:before {
+//     height: 18px !important;
+//   }
+//   .icon:before {
+//     font-size: 11px;
+//     width: 10px;
+//     height: 10px;
+//     opacity: .6;
+//     position: relative;
+//     top: 0px;
+//   }
+//   .header:before {
+//     font-size: 10px !important;
+//     opacity: .6;
+//     margin-right: 0px !important;
+//   }
+// }
+
+/* more subtle invisibles */
+// atom-text-editor {
+//   .invisible-character {
+//     color: #504949;
+//     opacity: 0.5;
+//   }
+//   .indent-guide {
+//     opacity: .5;
+//   }
+// }
+
+/* thicker cursor */
+// // atom-text-editor .cursor {
+// //   border-left-width: 2px;
+// // }
+// //
+// // atom-text-editor.is-focused .selection .region {
+// //   background-color: RGBA(100, 110, 100, 0.6);
+// //   color: #fff !important;
+// //   text-shadow: none;
+// // }
+// //
+// // .status-bar-vim-mode-normal,
+// // .status-bar-vim-mode-insert,
+// // .status-bar-vim-mode-visual {
+// //   font-weight: bold;
+// //   text-align: center;
+// //   font-size: 1.5em;
+// //   width: 18rem;
+// //   text-transform: uppercase;
+// // }
+// //
+// // .status-bar-vim-mode-normal {
+// //   background: @normal-bg;
+// //   color: rgb(4, 111, 11);
+// // }
+// //
+// // .status-bar-vim-mode-insert {
+// //   background: @insert-bg;
+// //   color: white;
+// // }
+// //
+// // .status-bar-vim-mode-visual {
+// //   background: @visual-bg;
+// //   color: rgb(168, 117, 5);
+// // }
+//
+// // change cursor color in normal mode
+// atom-text-editor.vim-mode.normal-mode.is-focused {
+//   &::shadow // shadow-DOM enabled
+//   {
+//     .cursor {
+//       background-color: @normal-bg;
+//     }
+//   }
+// }
+//
+// // // Normal mode block cursor
+// // atom-text-editor.vim-mode.normal-mode,
+// // atom-text-editor.vim-mode.operator-pending-mode
+// // {
+// //   &.is-focused {
+// //     &::shadow, // shadow-DOM enabled
+// //     &          // shadow-DOM disabled
+// //     {
+// //       /* cursor color */
+// //       .cursor {
+// //         background-color: #ff6600;
+// //         border-left-width: 2px;
+// //         opacity: 0.5;
+// //         visibility: visible;
+// //       }
+// //     }
+// //   }
+// // }
+// atom-text-editor.vim-mode.command-mode {
+//   .cursor, .cursor.blink-off {
+//     background-color: #F00;
+//     width: 7px !important;
+//     visibility: visible;
+//   }
+// }
+//
+// atom-text-editor::shadow .highlight.find-result .region {
+//   background: orange;
+//   opacity: 0.5;
+// }
+// atom-text-editor::shadow .highlight.current-result .region,
+// atom-text-editor::shadow .highlight.current-result ~ .highlight.selection .region {
+//   background: red; // to distinguish from the other results
+//   opacity: 0.5;
+// }
+
+// add or import these into your Atom styles.less
+
+/******************  VIM MODE STATUS BAR ****************************************/
+
+// green
+@normal-bg: rgb(105, 238, 103);
+// blue
+@insert-bg: rgb(7, 193, 242);
+// yellowish
+@visual-bg: rgb(255, 206, 98);
+
+
+// change the current cursor-line background color
+// based on vim mode
+atom-text-editor.is-focused {
+  &::shadow {
+    .cursor-line {
+      background: fadeout(@normal-bg, 80%);
+    }
+  }
+  &.insert-mode::shadow {
+    .cursor-line {
+      background: fadeout(@insert-bg, 92%);
+    }
+  }
+}
+
+
+// vim mode in the status bar at the bottom
+// make it nice and big so you can see it out of the corner of your eye
+// without thinking about it.
+.status-bar-vim-mode-normal,
+.status-bar-vim-mode-insert,
+.status-bar-vim-mode-visual {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5em;
+  width: 18rem;
+  text-transform: uppercase;
+}
+
+
+.status-bar-vim-mode-normal {
+  background: @normal-bg;
+  color: rgb(4, 111, 11);
+}
+
+.status-bar-vim-mode-insert {
+  background: @insert-bg;
+  color: white;
+}
+
+.status-bar-vim-mode-visual {
+  background: @visual-bg;
+  color: rgb(168, 117, 5);
+}
+
+// change cursor color in normal mode
+atom-text-editor.vim-mode.normal-mode.is-focused {
+  &::shadow // shadow-DOM enabled
+  {
+    .cursor {
+      background-color: @normal-bg;
+    }
+  }
+}
+
+// visual mode and selected text
+atom-text-editor::shadow .selection .region {
+  background-color: fadeout(@visual-bg, 75%);
+}
+
+atom-text-editor.vim-mode.command-mode {
+  .cursor, .cursor.blink-off {
+    background-color: #F00;
+    width: 7px !important;
+    visibility: visible;
+  }
+}
+
+atom-text-editor.vim-mode.command-mode {
+  .cursor {
+    background-color: red;
+    width: 7px !important;
+    visibility: visible;
+  }
+}
+
+html, body, .tree-view, .tooltip, .tab-bar .tab, .find-and-replace .find-meta-container, atom-text-editor[mini], .btn, .status-bar, .list-tree li.list-nested-item > .list-item, .list-tree li.list-item {
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 0;
+}

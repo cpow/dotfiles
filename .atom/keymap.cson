@@ -1,0 +1,18 @@
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'ctrl-k': 'window:focus-pane-above'
+  'ctrl-j': 'window:focus-pane-below'
+  'ctrl-l': 'window:focus-pane-on-right'
+  'ctrl-h': 'window:focus-pane-on-left'
+
+'atom-text-editor.vim-mode-plus.normal-mode':
+  'g f':      'open-this:here'
+  'ctrl-w f': 'open-this:split-down'
+  'ctrl-w F': 'open-this:split-right'
+
+'atom-workspace':
+  'escape': 'core:cancel'
+  'tab': 'core:cancel'
+
+'atom-text-editor.vim-mode-plus.normal-mode':
+  ':': 'vim-mode-plus-ex-mode:open'
+  '!': 'vim-mode-plus-ex-mode:toggle-setting'

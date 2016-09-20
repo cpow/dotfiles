@@ -1,0 +1,69 @@
+"*":
+  Zen:
+    gutter: true
+  "advanced-new-file":
+    caseSensitiveAutoCompletion: true
+    createFileInstantly: true
+  "advanced-open-file":
+    createDirectories: true
+    createFileInstantly: true
+    defaultInputValue: "Project root"
+    fuzzyMatch: true
+  "atom-terminal": {}
+  "atom-ternjs":
+    useSnippets: true
+  "base16-syntax":
+    scheme: "Railscasts"
+  core:
+    disabledPackages: [
+      "linter-jscs"
+    ]
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontFamily: "Ubuntu Mono"
+    fontSize: 18
+    invisibles: {}
+    lineHeight: 1.2
+    showIndentGuide: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "c4e9837d-e3e2-db48-27a1-49822cc3a203"
+  "git-plus":
+    experimental: true
+  jshint:
+    onlyConfig: true
+  linter:
+    errorPanelHeight: 22
+  "linter-eslint": {}
+  "linter-jscs":
+    displayAs: "warning"
+    preset: "node-style-guide"
+  "markdown-preview":
+    useGitHubStyle: true
+  "one-light-ui":
+    fontSize: 10
+    layoutMode: "Compact"
+  rspec:
+    command: "bin/rspec"
+  "seti-ui":
+    compactView: true
+    font: "Default Atom Font"
+    themeColor: "Orange"
+  "terminal-plus":
+    core: {}
+    style:
+      defaultPanelHeight: "200px"
+      fontFamily: "monaco"
+    toggles:
+      autoClose: true
+  "vim-mode-plus":
+    useClipboardAsDefaultRegister: true
+  "vim-surround": {}
+  welcome:
+    showOnStartup: false
+".js.source":
+  editor:
+    softWrap: false
