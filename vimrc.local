@@ -1,9 +1,24 @@
-" vim-rspec mappings continued
-let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
-nnoremap <Leader>a :call RunAllSpecs()<CR>
+let test#strategy = "tslime"
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+"buffers
+nnoremap <Leader>b :Buffers<CR>
+
+
+let g:fzf_files_options =
+  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+let g:fzf_layout = { 'down': '~30%' }
+
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+
 nnoremap <c-p> :FZF<cr>
 map <C-n> :NERDTreeToggle<CR>
-"
+
 " Fix slow O inserts
 set timeout timeoutlen=1000 ttimeoutlen=100
 
@@ -25,7 +40,8 @@ set re=1
 
 set t_Co=256
 set background=light
-colorscheme github
+" colorscheme solarized
+" let g:solarized_termcolors=256
 
 " js beautify
 " nnoremap <Leader>f :call JsBeautify()<CR>
@@ -74,4 +90,3 @@ au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 " highlight Pmenu        ctermbg=240 ctermfg=12
 " highlight PmenuSel     ctermbg=3   ctermfg=1
 " highlight SpellBad     ctermbg=0   ctermfg=1
-"

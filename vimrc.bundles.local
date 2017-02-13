@@ -20,13 +20,14 @@ Plug 'Raimondi/delimitMate'
 Plug 'elixir-lang/vim-elixir'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'jgdavey/vim-turbux'
+" Plug 'jgdavey/vim-turbux'
 Plug 'chriskempson/base16-vim'
 " Plug 'benekastah/neomake'
 Plug 'neomake/neomake'
 " Plug 'tpope/vim-obsession'
 " Plug 'kassio/neoterm'
 Plug 'scrooloose/nerdtree'
+Plug 'avdgaag/vim-phoenix'
 
 function! DoRemote(arg)
   UpdateRemotePlugins
@@ -34,3 +35,6 @@ endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'janko-m/vim-test'
+
+
