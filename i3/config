@@ -36,13 +36,9 @@ set $mod Mod4
 
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-settings-daemon
-exec --no-startup-id "xmodmap ~/.xmodmap"
 
-exec_always xmodmap -e "clear lock" #disable caps lock switch
-exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
-exec --no-startup-id compton -f -D 3 --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b &
-# exec --no-startup-id setxkbmap -option ctrl:swapcaps
+exec --no-startup-id compton -f -D 3 --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''"
 
 for_window [class="Spotify Premium"] floating enable
 
@@ -56,7 +52,7 @@ for_window [class="Spotify Premium"] floating enable
 # chose a FreeType font, such as:
 # font pango:Droid Sans Mono 10
 
-font pango:System San Francisco 11
+font pango:Fira Code 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -68,8 +64,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec rofi -show window
-bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 100 -height 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+# bindsym $mod+space exec rofi -show window
+bindsym $mod+space exec rofi -show window -lines 10 -eh 2 -width 100 -height 100 -padding 300 -opacaty "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Fira Code 18"
+bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 100 -height 100 -padding 300 -opacaty "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Fira Code 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -181,16 +178,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    font pango: System San Francisco Display, FontAwesome 11
+    font pango: Fira Code, FontAwesome 14
     colors {
-      # separator $base03
-      # background $base01
-      # statusline $base05
-#                        border  background text
-      # focused_workspace  $base01 $base01    $base07
-      # active_workspace   $base01 $base02    $base03
-      # inactive_workspace $base01 $base01    $base03
-      # urgent_workspace   $base01 $base01    $base08
+      separator $base03
+      background $base01
+      statusline $base05
+      #                  border  background text
+      focused_workspace  $base01 $base01    $base07
+      active_workspace   $base01 $base02    $base03
+      inactive_workspace $base01 $base01    $base03
+      urgent_workspace   $base01 $base01    $base08
     }
 
     # i3bar position

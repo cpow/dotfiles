@@ -1,14 +1,7 @@
 let test#strategy = "tslime"
 
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-
 "buffers
 nnoremap <Leader>b :Buffers<CR>
-
 
 let g:fzf_files_options =
   \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
@@ -40,7 +33,7 @@ set re=1
 
 set t_Co=256
 set background=light
-" colorscheme solarized
+" colorscheme github
 " let g:solarized_termcolors=256
 
 " js beautify

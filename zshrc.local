@@ -15,9 +15,9 @@ path+=('/home/cpow/npm')
 path+=('/home/cpow/npm/bin')
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-export NVM_DIR="/Users/cpow/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.light.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
