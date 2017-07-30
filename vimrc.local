@@ -3,13 +3,14 @@ let test#strategy = "tslime"
 "buffers
 nnoremap <Leader>b :Buffers<CR>
 
-let g:fzf_files_options =
-  \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-let g:fzf_layout = { 'down': '~30%' }
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>d <Plug>DashSearch
+"buffers
 
-let $FZF_DEFAULT_COMMAND= 'ag -g ""'
-
-nnoremap <c-p> :FZF<cr>
 map <C-n> :NERDTreeToggle<CR>
 
 " Fix slow O inserts
@@ -20,6 +21,7 @@ set cursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=2
+set mouse=a
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
@@ -29,35 +31,40 @@ set hidden
 set rnu
 set re=1
 " set listchars=tab:▸\ ,eol:¬
-" set re=1
 
-set t_Co=256
+" set t_Co=256
+" let g:solarized_termcolors= 256
+let g:solarized_termtrans=1
 set background=light
-" colorscheme github
-" let g:solarized_termcolors=256
-
-" js beautify
-" nnoremap <Leader>f :call JsBeautify()<CR>
+colorscheme solarized
 
 " highlight search and clear search
 set hlsearch
 nnoremap <Leader>h :nohlsearch<CR>
 
-" session management
-" let g:session_directory = "~/.vim/session"
-" let g:session_autoload = "no"
-" let g:session_autosave = "no"
-" let g:session_command_aliases = 1
-" nnoremap <leader>so :OpenSession<CR>
-" nnoremap <leader>ss :SaveSession<CR>
-" nnoremap <leader>sd :DeleteSession<CR>
-" nnoremap <leader>sc :CloseSession<CR>
+" for devin :)
+inoremap jk <esc>
+inoremap jj <esc>
+cnoremap jk <esc>
+cnoremap jj <esc>
+vnoremap v <esc>
 
-" use arrows for youcompleteme, tab expands snippets
-set runtimepath+=~/.config/nvim/bundle/deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-autocmd! BufWritePost * Neomake
-let g:UltiSnipsExpandTrigger="<tab>"
+set completeopt-=preview
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
+let g:UltiSnipsExpandTrigger="<C-j>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" only lint on save through ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_open_list = 0
+
+" linting things
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
 
 " nice silver searcher Agrep command
 if executable('ag')
@@ -67,6 +74,7 @@ endif
 au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 
 " highlight clear SignColumn
+" highlight ColorColumn ctermfg=94
 " highlight TabLineFill ctermfg=236 ctermbg=240
 " highlight TabLine ctermfg=236 ctermbg=240
 " highlight TabLineSel ctermfg=red ctermbg=240
