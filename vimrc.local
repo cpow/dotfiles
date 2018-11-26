@@ -1,5 +1,7 @@
 let test#strategy = "tslime"
 
+set clipboard=unnamed
+
 "buffers
 nnoremap <Leader>b :Buffers<CR>
 
@@ -7,8 +9,10 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
 nmap <silent> <leader>d <Plug>DashSearch
+
+nmap <Leader>r <Plug>SetTmuxVars
+
 "buffers
 
 map <C-n> :NERDTreeToggle<CR>
@@ -27,14 +31,24 @@ set mouse=a
 set autoread
 set hidden
 
-" relative numbers
-set rnu
+" faster scrolling regex
 set re=1
+
+if executable('css-languageserver')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'css-languageserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+      \ 'whitelist': ['css', 'less', 'sass'],
+      \ })
+endif
+
+
+" relative numbers
+" set rnu
 " set listchars=tab:▸\ ,eol:¬
 
 " set t_Co=256
 " let g:solarized_termcolors= 256
-let g:solarized_termtrans=1
 set background=light
 colorscheme solarized
 
@@ -56,9 +70,18 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " only lint on save through ale
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
-let g:ale_open_list = 0
+let g:ale_lint_on_save = 1
+
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " linting things
 let g:ale_linters = {
@@ -73,6 +96,12 @@ endif
 
 au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+"
 " highlight clear SignColumn
 " highlight ColorColumn ctermfg=94
 " highlight TabLineFill ctermfg=236 ctermbg=240
