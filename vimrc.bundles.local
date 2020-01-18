@@ -1,24 +1,16 @@
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'Galooshi/vim-import-js'
-Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'altercation/vim-colors-solarized'
-Plug 'elixir-lang/vim-elixir'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'jremmen/vim-ripgrep'
-Plug 'w0rp/ale'
-Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'janko-m/vim-test'
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ervandew/supertab'
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'

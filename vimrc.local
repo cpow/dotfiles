@@ -34,40 +34,47 @@ set hidden
 " faster scrolling regex
 set re=1
 
-if executable('css-languageserver')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'css-languageserver',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
-      \ 'whitelist': ['css', 'less', 'sass'],
-      \ })
-endif
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" relative numbers
-" set rnu
-" set listchars=tab:▸\ ,eol:¬
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 
-" set t_Co=256
-" let g:solarized_termcolors= 256
-set background=light
-colorscheme solarized
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " highlight search and clear search
 set hlsearch
 nnoremap <Leader>h :nohlsearch<CR>
-
-" for devin :)
-inoremap jk <esc>
-inoremap jj <esc>
-cnoremap jk <esc>
-cnoremap jj <esc>
-vnoremap v <esc>
-
-set completeopt-=preview
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
-
-let g:UltiSnipsExpandTrigger="<C-j>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " only lint on save through ale
 let g:ale_lint_on_text_changed = 0
@@ -85,7 +92,15 @@ let g:user_emmet_settings = {
 
 " linting things
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier'],
+\   'typescript': ['tsserver', 'tslint'],
+\   'ruby': ['rubocop'],
+\}
+
+" fixing things
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\    'typescript': ['prettier'],
 \   'ruby': ['rubocop'],
 \}
 
@@ -100,6 +115,7 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
 
 "
 " highlight clear SignColumn
