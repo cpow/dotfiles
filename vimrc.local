@@ -7,7 +7,6 @@ nnoremap <Leader>b :Buffers<CR>
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>d <Plug>DashSearch
 
@@ -42,6 +41,7 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" COC STUFF
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -55,10 +55,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <space>af  :<C-u>CocCommand tsserver.executeAutofix<cr>
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -67,7 +66,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " Remap for format selected region
+nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -77,9 +79,10 @@ set hlsearch
 nnoremap <Leader>h :nohlsearch<CR>
 
 " only lint on save through ale
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_fix_on_save = 1
 
 let g:user_emmet_settings = {
 \  'javascript' : {
@@ -91,19 +94,19 @@ let g:user_emmet_settings = {
 \}
 
 " linting things
-let g:ale_linters = {
-\   'javascript': ['prettier'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'ruby': ['rubocop'],
-\}
-
+" let g:ale_linters = {
+" \   'javascript': ['prettier'],
+" \   'typescript': ['tsserver', 'tslint'],
+" \   'ruby': ['rubocop'],
+" \}
+"
 " fixing things
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\    'typescript': ['prettier'],
-\   'ruby': ['rubocop'],
-\}
-
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'typescript': ['prettier'],
+" \   'ruby': ['rubocop'],
+" \}
+"
 " nice silver searcher Agrep command
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -115,7 +118,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
 
 "
 " highlight clear SignColumn

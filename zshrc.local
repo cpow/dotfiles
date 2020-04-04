@@ -34,3 +34,12 @@ eval "$(tmuxifier init -)"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+export PATH="$HOME/.bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+source /Users/chrispower/.asdf/asdf.sh
+
+
+# Enable Credstash to load local AWS config
+export AWS_SDK_LOAD_CONFIG=true
+
+export PATH="$(yarn global bin):$PATH"
