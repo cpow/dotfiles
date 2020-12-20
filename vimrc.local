@@ -33,56 +33,20 @@ set hidden
 " faster scrolling regex
 set re=1
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" COC STUFF
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <space>af  :<C-u>CocCommand tsserver.executeAutofix<cr>
-
-" Use K to show documentation in preview window
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Remap for format selected region
-nmap <leader>rn <Plug>(coc-rename)
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 " highlight search and clear search
 set hlsearch
 nnoremap <Leader>h :nohlsearch<CR>
 
 " only lint on save through ale
-" let g:ale_lint_on_text_changed = 0
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_save = 1
-" let g:ale_fix_on_save = 1
+let g:ale_sign_error = '💩 '
+let g:ale_sign_warning = '😵 '
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_ruby_rubocop_auto_correct_all = 1
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 
 let g:user_emmet_settings = {
 \  'javascript' : {
@@ -94,47 +58,29 @@ let g:user_emmet_settings = {
 \}
 
 " linting things
-" let g:ale_linters = {
-" \   'javascript': ['prettier'],
-" \   'typescript': ['tsserver', 'tslint'],
-" \   'ruby': ['rubocop'],
-" \}
-"
+let g:ale_linters = {
+\   'javascript': ['prettier'],
+\   'ruby': ['solargraph', 'rubocop'],
+\   'erb': ['erubylint'],
+\}
+
 " fixing things
-" let g:ale_fixers = {
-" \   'javascript': ['prettier'],
-" \   'typescript': ['prettier'],
-" \   'ruby': ['rubocop'],
-" \}
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'ruby': ['rubocop'],
+\   'erb': ['erubylint'],
+\}
 "
 " nice silver searcher Agrep command
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+set background=dark
+colorscheme solarized8
+
 au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-"
-" highlight clear SignColumn
-" highlight ColorColumn ctermfg=94
-" highlight TabLineFill ctermfg=236 ctermbg=240
-" highlight TabLine ctermfg=236 ctermbg=240
-" highlight TabLineSel ctermfg=red ctermbg=240
-" highlight VertSplit    ctermbg=236
-" highlight ColorColumn  ctermbg=237
-" highlight LineNr       ctermbg=236 ctermfg=240
-" highlight CursorLineNr ctermbg=236 ctermfg=240
-" highlight CursorLine   ctermbg=236
-" highlight StatusLineNC ctermbg=238 ctermfg=0
-" highlight StatusLine   ctermbg=240 ctermfg=12
-" highlight IncSearch    ctermbg=3   ctermfg=1
-" highlight Search       ctermbg=1   ctermfg=3
-" highlight Visual       ctermbg=3   ctermfg=0
-" highlight Pmenu        ctermbg=240 ctermfg=12
-" highlight PmenuSel     ctermbg=3   ctermfg=1
-" highlight SpellBad     ctermbg=0   ctermfg=1
